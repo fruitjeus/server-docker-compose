@@ -1,0 +1,13 @@
+version: "3"
+services:
+  duckdns:
+    image: lscr.io/linuxserver/duckdns
+    environment:
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - TZ=${TZ}
+      - SUBDOMAINS=${SUBDOMAINS}
+      - TOKEN=${TOKEN}
+      - LOG_FILE=false #optional
+    volumes:
+      - /data/duckdns/config:/config #optional

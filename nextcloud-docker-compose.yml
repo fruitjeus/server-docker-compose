@@ -1,0 +1,62 @@
+version: '3'
+
+volumes:
+  nextcloud:
+    driver: local
+  nextcloud-db:
+    driver: local
+  redis:
+    driver: local
+
+services:
+  db:
+    image: postgres:11-alpine
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+    volumes:
+      - nextcloud-db:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis:/var/lib/redis
+
+  app:
+    image: nextcloud:fpm-alpine
+    volumes:
+      - nextcloud:/var/www/html
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=db
+      - NEXTCLOUD_ADMIN_USER=${NEXTCLOUD_ADMIN_USER}
+      - NEXTCLOUD_ADMIN_PASSWORD=${NEXTCLOUD_ADMIN_PASSWORD}
+      - REDIS_HOST=redis
+      - NEXTCLOUD_TRUSTED_DOMAINS=${NEXTCLOUD_TRUSTED_DOMAIN}
+    depends_on:
+      - db
+      - redis
+
+  web:
+    image: nginx:alpine
+    ports:
+      - 8888:80
+      - 8889:443
+    volumes:
+      - /data/nextcloud-nginx/nginx.conf:/etc/nginx/nginx.conf
+      - nextcloud:/var/www/html:ro
+    depends_on:
+      - app
+
+
+  cron:
+    image: nextcloud:fpm-alpine
+    volumes:
+      - nextcloud:/var/www/html
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+      - redis
