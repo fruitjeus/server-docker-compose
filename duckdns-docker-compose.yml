@@ -10,4 +10,4 @@ services:
       - TOKEN=${TOKEN}
       - LOG_FILE=false #optional
     volumes:
-      - /data/duckdns/config:/config #optional
+      - /data/duckdns:/config #optional
