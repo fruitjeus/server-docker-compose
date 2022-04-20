@@ -1,10 +1,5 @@
 version: "3"
 
-networks:
-    stacks:
-        external:
-            name: stacks
-
 services:
     caddy:
         image: caddy:2-alpine
@@ -16,5 +11,3 @@ services:
             - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
             - /data/caddy/data:/data # Optional
             - /data/caddy/config:/config # Optional
-        networks:
-            - stacks
