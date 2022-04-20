@@ -1,0 +1,7 @@
+version: '3'
+services:
+    dejavu:
+          image: appbaseio/dejavu
+          container_name: dejavu
+          ports:
+              - '1358:1358'
