@@ -24,7 +24,7 @@ services:
       - redis:/var/lib/redis
 
   app:
-    image: nextcloud:fpm-alpine
+    image: nextcloud:stable-fpm-alpine
     volumes:
       - nextcloud:/var/www/html
     environment:
@@ -53,7 +53,7 @@ services:
 
 
   cron:
-    image: nextcloud:fpm-alpine
+    image: nextcloud:stable-fpm-alpine
     volumes:
       - nextcloud:/var/www/html
     entrypoint: /cron.sh
