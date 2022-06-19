@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  monitor:
+    image: fopina/portainer-capability-manager:0.1.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
