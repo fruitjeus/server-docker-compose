@@ -18,7 +18,7 @@ services:
       - /data/wireguard-server/config:/config
       - /lib/modules:/lib/modules
     ports:
-      - 51820:51820/udp
+      - ${SERVER_PORT}:${SERVER_PORT}/udp
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
