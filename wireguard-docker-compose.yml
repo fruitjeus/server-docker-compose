@@ -23,6 +23,3 @@ services:
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
-    deploy:
-      labels:
-        io.portainerhack.cap_add: NET_ADMIN,SYS_MODULE
