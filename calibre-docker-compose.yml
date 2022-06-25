@@ -12,4 +12,17 @@ services:
       - /data/calibre/config:/config
       - /data/calibre/library:/books
     ports:
-      - 8083:8083
+      - 8083:8083    
+  calibre:
+    image: lscr.io/linuxserver/calibre:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - PASSWORD=${PASSWORD}
+      - CLI_ARGS= #optional
+    volumes:
+      - /data/calibre/library:/config
+    ports:
+      - 8084:8080
+      - 8085:8081
