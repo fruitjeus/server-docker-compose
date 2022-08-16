@@ -11,3 +11,5 @@ services:
             - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
             - /data/caddy/data:/data # Optional
             - /data/caddy/config:/config # Optional
+        extra_hosts:
+            - host.docker.internal:host-gateway
