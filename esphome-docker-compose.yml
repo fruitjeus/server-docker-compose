@@ -4,8 +4,10 @@ services:
     container_name: esphome
     image: esphome/esphome
     volumes:
-      - ${ESPHOME_CONFIG}:/config
+      - /data/esphome/config:/config
       - /etc/localtime:/etc/localtime:ro
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB1
     restart: always
     privileged: true
     ports:
