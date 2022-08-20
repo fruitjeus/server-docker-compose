@@ -1,12 +1,13 @@
 version: "3"
 
-adb:
-  image: sorccu/adb
-  privileged: true
-  command: sh -c "/config/startup.sh & adb -a -P 5037 server nodaemon"
-  volumes:
-    - /data/homeassistant/adb_config:/config
-    - /etc/localtime:/etc/localtime:ro
-    - /etc/timezone:/etc/timezone:ro
-  ports:
-    - 5037:5037
+services:
+  adb:
+    image: sorccu/adb
+    privileged: true
+    command: sh -c "/config/startup.sh & adb -a -P 5037 server nodaemon"
+    volumes:
+      - /data/homeassistant/adb_config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - 5037:5037
