@@ -10,3 +10,10 @@ services:
     privileged: true
     ports:
       - "8123:8123"
+    networks:
+      - host
+
+networks:
+  host:
+    name: host
+    external: true
