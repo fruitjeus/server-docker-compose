@@ -11,9 +11,9 @@ services:
     ports:
       - "8123:8123"
     networks:
-      - host
+      - hostNet
 
 networks:
-  host:
+  hostNet:
     name: host
     external: true
