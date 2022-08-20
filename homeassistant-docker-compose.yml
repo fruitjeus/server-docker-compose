@@ -10,10 +10,5 @@ services:
     privileged: true
     ports:
       - "8123:8123"
-    networks:
-      hostnet: {}
-
-networks:
-  hostnet:
-    name: host
-    external: true
+    extra_hosts:
+      - host.docker.internal:host-gateway
