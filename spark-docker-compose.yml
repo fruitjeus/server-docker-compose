@@ -3,6 +3,7 @@ version: '3'
 services:
   spark:
     image: docker.io/bitnami/spark:${SPARK_VERSION}
+    user: root
     environment:
       - SPARK_MODE=master
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
