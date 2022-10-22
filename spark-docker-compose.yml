@@ -13,7 +13,7 @@ services:
       - '8080:8080'
       - '7077:7077'
     volumes:
-      - /data/spark/conf/spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
+      - /data/spark/conf:/opt/bitnami/spark/conf
   spark-worker:
     image: docker.io/bitnami/spark:${SPARK_VERSION}
     environment:
