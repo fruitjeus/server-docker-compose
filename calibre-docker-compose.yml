@@ -5,8 +5,8 @@ services:
     security_opt:
       - seccomp:unconfined
     environment:
-      - PUID=82
-      - PGID=82
+      - PUID=0
+      - PGID=0
       - TZ=${TZ}
       - PASSWORD=${PASSWORD}
       - CLI_ARGS= #optional
