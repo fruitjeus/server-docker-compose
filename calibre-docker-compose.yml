@@ -5,13 +5,13 @@ services:
     security_opt:
       - seccomp:unconfined
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=82
+      - PGID=82
       - TZ=${TZ}
       - PASSWORD=${PASSWORD}
       - CLI_ARGS= #optional
     volumes:
-      - /data/nextcloud/data/data/admin/files/Personal/Library:/config
+      - /data/calibre/config:/config
     ports:
       - 8084:8080
       - 8085:8081
