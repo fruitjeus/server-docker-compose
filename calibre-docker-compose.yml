@@ -11,7 +11,7 @@ services:
       - PASSWORD=${PASSWORD}
       - CLI_ARGS= #optional
     volumes:
-      - /data/nextcloud/data/admin/files/Personal/Library:/config
+      - /data/nextcloud/data/data/admin/files/Personal/Library:/config
     ports:
       - 8084:8080
       - 8085:8081
