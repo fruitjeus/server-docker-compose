@@ -1,0 +1,14 @@
+verion: 3.8
+
+services:
+  grocy:
+    image: lscr.io/linuxserver/grocy:latest
+    container_name: grocy
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /data/grocy:/config
+    ports:
+      - 9283:80
