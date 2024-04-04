@@ -1,0 +1,35 @@
+services:
+  snipe-it:
+    image: lscr.io/linuxserver/snipe-it:latest
+    container_name: snipe-it
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Singapore
+      - APP_URL=https://snipeit.wghomeserver.duckdns.org
+      - MYSQL_PORT_3306_TCP_ADDR=${MYSQL_HOST}
+      - MYSQL_PORT_3306_TCP_PORT=${MYSQL_PORT}
+      - MYSQL_DATABASE=snipeit
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - APP_ENV=production #optional
+      - APP_DEBUG=false #optional
+      - APP_LOCALE=en-US #optional
+    volumes:
+      - /path/to/data:/config
+    ports:
+      - 2222:80
+  
+  mariadb:
+    image: mariadb:10.6.4-focal
+    volumes:
+    - db:/var/lib/mysql
+    env_file:
+    - .env.docker
+    networks:
+    - snipeit-backend
+    ports:
+      - "3306:3306"
+
+volumes:
+  db: {}
