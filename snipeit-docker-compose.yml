@@ -2,7 +2,6 @@ version: '3'
 services:
   snipe-it:
     image: lscr.io/linuxserver/snipe-it:latest
-    container_name: snipe-it
     environment:
       - PUID=1000
       - PGID=1000
@@ -30,8 +29,6 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    networks:
-    - snipeit-backend
     ports:
       - "3306:3306"
 
