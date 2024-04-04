@@ -25,6 +25,11 @@ services:
     image: mariadb:10.6.4-focal
     volumes:
     - db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DB}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     env_file:
     - .env.docker
     networks:
