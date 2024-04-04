@@ -16,7 +16,7 @@ services:
       - APP_DEBUG=false #optional
       - APP_LOCALE=en-US #optional
     volumes:
-      - /path/to/data:/config
+      - /data/snipeit:/config
     ports:
       - 2222:80
   
