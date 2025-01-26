@@ -5,7 +5,9 @@ services:
         image: fruitjeus/anki-sync-server:${ANKI_VERSION}
         container_name: anki-container
         restart: always
+        environment:
+          - SYNC_USER1=${SYNC_USER1}
         ports:
-        - ${PORT}:${PORT}
+          - ${PORT}:${PORT}
         volumes:
-        - /data/anki/data:/app/data
+          - /data/anki/data:/app/data
