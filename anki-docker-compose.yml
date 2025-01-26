@@ -8,4 +8,4 @@ services:
         ports:
           - ${PORT}:8080
         volumes:
-          - /data/anki/data:/app/data
+          - /data/anki/data:/anki_data
