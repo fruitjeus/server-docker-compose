@@ -6,6 +6,6 @@ services:
         environment:
           - SYNC_USER1=${SYNC_USER1}
         ports:
-          - ${PORT}:8080
+          - 27701:8080
         volumes:
           - /data/anki/data:/anki_data
