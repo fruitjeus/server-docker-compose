@@ -2,10 +2,10 @@ version: "3"
 
 services:
     anki-container:
-        image: kuklinistvan/anki-sync-server:latest
+        image: fruitjeus/anki-sync-server:${ANKI_VERSION}
         container_name: anki-container
         restart: always
         ports:
-        - "27701:27701"
+        - ${PORT}:${PORT}
         volumes:
         - /data/anki/data:/app/data
