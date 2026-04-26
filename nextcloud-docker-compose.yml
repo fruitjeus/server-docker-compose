@@ -1,7 +1,7 @@
 version: '3'
 
 volumes:
-  nextcloud-db:
+  nextcloud-db16:
     driver: local
   redis:
     driver: local
@@ -14,7 +14,7 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
     volumes:
-      - nextcloud-db:/var/lib/postgresql/data
+      - nextcloud-db16:/var/lib/postgresql/data
 
   redis:
     image: redis:alpine
