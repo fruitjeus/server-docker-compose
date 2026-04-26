@@ -1,0 +1,8 @@
+version: "3"
+services:
+  logseq:
+    image: ghcr.io/logseq/logseq-webapp:latest
+    container_name: logseq
+    ports:
+      - 3001:80
+    restart: unless-stopped
